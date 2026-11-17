@@ -14,10 +14,10 @@
 
 ## 角色
 
-- 队长：mobile/ 和整体验收、产品及演示。
-- A：server/api/、server/db/、后端入口和部署，维护公共接口。
-- B：server/planner/、tests/planner/，调度与事件重排。
-- C：server/ai/、data/、tests/ai/，AI、核对菜谱与场景。
+- A：mobile/ 和整体验收、产品及演示。
+- B：server/api/、server/db/、后端入口和部署，维护公共接口。
+- C：server/planner/、tests/planner/，调度与事件重排。
+- D：server/ai/、data/、tests/ai/，AI、核对菜谱与场景。
 
 每个角色同步维护测试和说明。初日可互换岗位；跨目录和公共约定修改需先与相应负责人协调。
 

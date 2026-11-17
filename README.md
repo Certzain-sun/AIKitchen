@@ -4,7 +4,7 @@ SW Contest Programme
 
 知味厨房：整桌菜单设计与协同烹饪调度 Android 应用。
 
-当前状态：协作资料和目录已初始化，尚无可运行APP、后端或调度实现。示例数据仅用于接口和程序测试，不是实际菜谱指导。
+当前状态（2026-11-17）：协作资料已初始化，Flutter 安卓基础工程已创建，并已在 Android 16 模拟器上编译、安装和启动。页面仍为默认计数器示例；业务前端、后端、数据库和调度尚未实现。示例数据仅用于接口和程序测试，不是实际菜谱指导。
 
 ## 四个人先读什么
 
@@ -24,10 +24,14 @@ SW Contest Programme
 - 在自己的模块分支工作，每次提交一个可检查的小任务。
 - 每日复核、合并后共同运行一个样例。按计划目标于11月30日封版，12月1日展示初版。
 
-建议路线为 Flutter Android + FastAPI/Python + OR-Tools + 单实例SQLite演示；启动会确认后固定，当前没有安装任何依赖。
+手机端已采用 Flutter Android；后端建议使用 FastAPI/Python + OR-Tools + 单实例 SQLite，尚待组员实现。每台电脑需自行安装开发环境。
 
 ## 目录
 
 `mobile/` 手机端；`server/api/` 接口；`server/db/` 数据；`server/planner/` 调度；`server/ai/` 模型；`data/` 共享样例；`tests/` 测试；`docs/` 共同约定。
 
 不要把API密钥、本地数据库、成品照片原件和生成目录提交到仓库。配置参照 `.env.example`，在各自电脑上建立 `.env`。
+
+## 最新开发进度与明日入口
+
+本机正式开发目录为 D:\GitCode\AIKitchen；旧中文目录仅保留作备份。组员也请克隆到纯英文路径。运行方法见 mobile/README.md；今天的完成项、限制及明日任务见 docs/PROGRESS_2026-11-17.md。

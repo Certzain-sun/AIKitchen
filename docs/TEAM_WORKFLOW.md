@@ -2,7 +2,7 @@
 
 ## 第一次同步
 
-队长检查初始化文件后，在GitHub Desktop填写提交说明“初始化知味厨房共同开发资料”，Commit to main，再Push origin。三名组员接受邀请后Clone同一个AIKitchen仓库；已克隆者先Fetch origin，再按提示Pull origin。
+A检查初始化文件后，在GitHub Desktop填写提交说明“初始化知味厨房共同开发资料”，Commit to main，再Push origin。三名组员接受邀请后Clone同一个AIKitchen仓库；已克隆者先Fetch origin，再按提示Pull origin。
 
 这是资料初始化。正式开发各人从最新main创建个人任务分支，例如feature/mobile-form、feature/api-health、feature/planner-basic、feature/ai-menu。
 
@@ -18,8 +18,8 @@
 
 ## 模块衔接
 
-C写任务数据和AI模块，B写读取这些任务的调度模块，A把两者接成API，队长通过API显示结果。未接通时可用明确标记fixture的样例做UI，不把它当真实模型或算法结果。
+D写任务数据和AI模块，C写读取这些任务的调度模块，B把两者接成API，A通过API显示结果。未接通时可用明确标记fixture的样例做UI，不把它当真实模型或算法结果。
 
 各人的AI对话无需共享；决定写进仓库文件。用能读取工程的AI时让它读文件；用网页AI时提供公共说明、当前相关文件和任务。更新代码后重新给AI最新依据。
 
-联调使用A维护的测试后端地址。手机的127.0.0.1指手机本身，不能代替电脑服务地址；由A给出实际可访问地址并测试。真实配置由各人在本机维护。
+联调使用B维护的测试后端地址。手机的127.0.0.1指手机本身，不能代替电脑服务地址；由B给出实际可访问地址并测试。真实配置由各人在本机维护。
