@@ -1,0 +1,195 @@
+{
+  "schema_version": "0.1",
+  "data_mode": "fixture",
+  "notice": "人工测试任务，时长及流程不作为实际烹饪指导。sample_schedule仅用于联调，非已实现求解器结果。",
+  "resources": [
+    {
+      "id": "cook_1",
+      "type": "cook",
+      "capacity": 1
+    },
+    {
+      "id": "burner_1",
+      "type": "burner",
+      "capacity": 1
+    },
+    {
+      "id": "wok_1",
+      "type": "wok",
+      "capacity": 1
+    },
+    {
+      "id": "rice_cooker_1",
+      "type": "rice_cooker",
+      "capacity": 1
+    }
+  ],
+  "tasks": [
+    {
+      "task_id": "rice_prep",
+      "dish_id": "rice",
+      "name": "测试淘米",
+      "duration_sec": 120,
+      "dependencies": [],
+      "resource_ids": [
+        "cook_1"
+      ]
+    },
+    {
+      "task_id": "rice_load",
+      "dish_id": "rice",
+      "name": "测试启动设备",
+      "duration_sec": 60,
+      "dependencies": [
+        "rice_prep"
+      ],
+      "resource_ids": [
+        "cook_1",
+        "rice_cooker_1"
+      ]
+    },
+    {
+      "task_id": "rice_cook",
+      "dish_id": "rice",
+      "name": "测试设备等待",
+      "duration_sec": 1200,
+      "dependencies": [
+        "rice_load"
+      ],
+      "resource_ids": [
+        "rice_cooker_1"
+      ],
+      "finish_window_sec": [
+        1200,
+        1800
+      ]
+    },
+    {
+      "task_id": "veg_prep",
+      "dish_id": "greens",
+      "name": "测试蔬菜准备",
+      "duration_sec": 180,
+      "dependencies": [],
+      "resource_ids": [
+        "cook_1"
+      ]
+    },
+    {
+      "task_id": "tomato_prep",
+      "dish_id": "tomato_egg",
+      "name": "测试另一道菜准备",
+      "duration_sec": 180,
+      "dependencies": [],
+      "resource_ids": [
+        "cook_1"
+      ]
+    },
+    {
+      "task_id": "tomato_cook",
+      "dish_id": "tomato_egg",
+      "name": "测试第一道炒菜",
+      "duration_sec": 240,
+      "dependencies": [
+        "tomato_prep"
+      ],
+      "resource_ids": [
+        "cook_1",
+        "burner_1",
+        "wok_1"
+      ],
+      "finish_window_sec": [
+        1200,
+        1800
+      ]
+    },
+    {
+      "task_id": "wash_wok",
+      "dish_id": "transition",
+      "name": "测试清洗转换",
+      "duration_sec": 60,
+      "dependencies": [
+        "tomato_cook"
+      ],
+      "resource_ids": [
+        "cook_1",
+        "wok_1"
+      ]
+    },
+    {
+      "task_id": "greens_cook",
+      "dish_id": "greens",
+      "name": "测试第二道炒菜",
+      "duration_sec": 240,
+      "dependencies": [
+        "veg_prep",
+        "wash_wok"
+      ],
+      "resource_ids": [
+        "cook_1",
+        "burner_1",
+        "wok_1"
+      ],
+      "finish_window_sec": [
+        1560,
+        1800
+      ]
+    }
+  ],
+  "cases": [
+    {
+      "case_id": "basic_three_dishes",
+      "description": "两道菜和米饭，共三项餐食；一个操作者、一个灶、一口炒锅和电饭锅。",
+      "available_from": "2026-11-20T18:00:00+08:00",
+      "serve_at": "2026-11-20T18:30:00+08:00",
+      "expected": "至少存在可行解，不预设是否最优",
+      "sample_schedule": [
+        {
+          "task_id": "rice_prep",
+          "start_sec": 0,
+          "end_sec": 120
+        },
+        {
+          "task_id": "rice_load",
+          "start_sec": 120,
+          "end_sec": 180
+        },
+        {
+          "task_id": "rice_cook",
+          "start_sec": 180,
+          "end_sec": 1380
+        },
+        {
+          "task_id": "veg_prep",
+          "start_sec": 180,
+          "end_sec": 360
+        },
+        {
+          "task_id": "tomato_prep",
+          "start_sec": 360,
+          "end_sec": 540
+        },
+        {
+          "task_id": "tomato_cook",
+          "start_sec": 1200,
+          "end_sec": 1440
+        },
+        {
+          "task_id": "wash_wok",
+          "start_sec": 1440,
+          "end_sec": 1500
+        },
+        {
+          "task_id": "greens_cook",
+          "start_sec": 1560,
+          "end_sec": 1800
+        }
+      ]
+    },
+    {
+      "case_id": "too_short",
+      "available_from": "2026-11-20T18:00:00+08:00",
+      "serve_at": "2026-11-20T18:10:00+08:00",
+      "expected": "固定米饭前置链1380秒大于600秒；应证明该固定输入不可行"
+    }
+  ]
+}

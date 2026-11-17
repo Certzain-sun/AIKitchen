@@ -14,8 +14,8 @@ dist/
 downloads/
 eggs/
 .eggs/
-lib/
-lib64/
+/lib/
+/lib64/
 parts/
 sdist/
 var/
@@ -221,3 +221,20 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# AIKitchen local configuration, Flutter generated files and runtime data
+.env.*
+!.env.example
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.idea/
+local.properties
+key.properties
+*.jks
+*.keystore
+/server/runtime/
+/mobile/android/.gradle/
+# Keep Flutter source visible even with a Python ignore template.
+!mobile/lib/
+!mobile/lib/**
